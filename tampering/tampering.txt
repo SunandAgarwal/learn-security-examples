@@ -1,0 +1,5 @@
+Whens sending the message in the Get endpoint, the variable name is used. However, its not guaranteed that the value of the variable would always
+be string. Instead it could have been tampered with to make it some custom JS code which could potentially be harmful to the server.
+Then, in the register endpoint, the value of the name variable, which could have been JS code, could cause problems.
+
+The secure version bypasses these problems by making the variable sanitized and removing any HTML code by escaping special characters through escapeHTML.

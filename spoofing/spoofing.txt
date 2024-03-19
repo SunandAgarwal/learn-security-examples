@@ -1,1 +1,8 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+There is a possibility that when a legitimate user has logged in, a malicious attacker can access the cookie using some script from the document. Once they get access
+to the session id from the cookie info, they can access the sensitive information of the logged in user.
+
+In the secure version, while setting the session, the secret is not hardcoded and httpOnly flag is set to true, hence the cookies cannot be read programmatically.
+Hence, an unauthorized script cannot just read the cookie. Also, sameSite is also set to true which means that sensitive information can only be accessed
+from another endpoint if they're on the same hostname.
