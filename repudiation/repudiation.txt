@@ -1,2 +1,13 @@
 - Briefly explain the vulnerability and why the secure version is better at preventing repudiation than the insecure version.
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
+The vulnerability in the insecure example stems from the lack of logging and authentication. Without proper logging, it's challenging to trace actions 
+back to the users who performed them. Additionally, without authentication, there's no reliable way to verify the identity of users making requests, 
+further compounding the repudiation issue. In this scenario, any user can send messages or retrieve them without the system having any means to 
+confirm their identity or log their activity in a way that ties them to their actions conclusively.
+
+The secure version includes middleware that logs every request, including the method, URL, and the requester's IP address, as well as specific actions 
+like sending messages and accessing messages.
+
+Utilizing secure authentication mechanisms, such as OAuth2, JWT, or sessions with strong session management practices. For critical actions, also consider 
+requiring a digital signature.

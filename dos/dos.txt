@@ -1,2 +1,9 @@
 - Briefly explain the vulnerability and why the secure version prevents the vulnerability.
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
+In the insecure version, the application takes an id parameter directly from the query string and uses it in a MongoDB query without validation or sanitization.
+The secure version attempts to mitigate the risk of causing a service outage due to bad input by wrapping the database query in a try-catch block.
+
+Explicitly validating inputs like the id to ensure they conform to expected formats can prevent attackers from submitting data that could lead 
+to expensive queries or operations. Implementing rate limiting to restrict the number of requests a user can make to sensitive endpoints within a 
+certain timeframe can also mitigate DoS attacks.

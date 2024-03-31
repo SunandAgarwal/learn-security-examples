@@ -1,0 +1,10 @@
+The vulnerability in the insecure example lies in how it checks the user's role for authorization. It determines authorization based on the role of 
+the user specified in the request body, without verifying the identity of the requester. This means any user who can send a POST request to the 
+/update-role endpoint could potentially modify the role of any user, including elevating their own privileges to that of an admin.
+
+The secure example mitigates this vulnerability by using session-based authentication. In this setup, the server checks if the user has an active session 
+and validates the role of the logged-in user (stored in the session) before allowing any changes to user roles. This ensures that only authenticated users,
+specifically those with admin roles, can perform role updates.
+
+Implementing multi-factor authentication (MFA) to add an additional layer of security makes it more challenging for attackers to gain unauthorized access.
+Users should be given the minimum levels of access needed to perform their tasks.

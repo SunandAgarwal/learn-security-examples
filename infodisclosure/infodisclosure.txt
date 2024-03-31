@@ -1,3 +1,12 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
 Which CIA property does tampering violate?
 What additional security mechanisms can you incorporate?
+
+The vulnerability in the insecure version is susceptible to NoSQL injection, which could lead to unauthorized disclosure of information. The application 
+accepts the username parameter directly from the user's request and inserts it into a MongoDB query without any form of validation or sanitization.
+
+Information disclosure directly violates the Confidentiality aspect of CIA. When an application inadvertently exposes sensitive information due to a 
+security vulnerability like NoSQL injection, it fails to maintain the confidentiality of that information.
+
+By verifying that the username is a string, the application ensures that the input matches the expected format. The process of removing non-alphanumeric 
+characters from the username input further protects against injection by limiting the characters that can be used to manipulate queries.
